@@ -95,7 +95,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 source ~/.bashrc
 ```
 
-#### Step 9: 
+#### Step 9:
 
 $ sudo apt-get install python2.7-dev
 $ pip install numpy
@@ -121,25 +121,33 @@ git checkout 3.2.0
 
 
 cd ~/opencv
-mkdir build
-cd build
+mkdir build && cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
 	-D CMAKE_INSTALL_PREFIX=/usr/local \
 	-D INSTALL_C_EXAMPLES=ON \
 	-D INSTALL_PYTHON_EXAMPLES=ON \
 	-D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+	-D WITH_JPEG=OFF \
 	-D BUILD_EXAMPLES=OFF ..
+
+
+-D WITH_JPEG=OFF  to get rid of "Corrupt JPEG data: 1 extraneous bytes before marker 0xd6"
+in OpenFace
+http://privateblog.info/linux/opencv-i-corrupt-jpeg-data-na-linux/
+http://stackoverflow.com/questions/15533338/opencv-error-on-ubuntu-webcam-logitech-c270-capture-highgui-error-v4l-v4l2
+
+
 
 
 
 ```
 -- General configuration for OpenCV 3.2.0 =====================================
 --   Version control:               3.2.0
--- 
+--
 --   Extra modules:
 --     Location (extra):            /home/map479-admin/opencv_contrib/modules
 --     Version control (extra):     3.2.0
--- 
+--
 --   Platform:
 --     Timestamp:                   2017-04-19T15:31:13Z
 --     Host:                        Linux 3.13.0-116-generic x86_64
@@ -147,7 +155,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     CMake generator:             Unix Makefiles
 --     CMake build tool:            /usr/bin/make
 --     Configuration:               RELEASE
--- 
+--
 --   C/C++:
 --     Built as dynamic libs?:      YES
 --     C++ Compiler:                /usr/bin/c++  (ver 4.8.4)
@@ -162,22 +170,22 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     Precompiled headers:         YES
 --     Extra dependencies:          /usr/lib/x86_64-linux-gnu/libpng.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libtiff.so /usr/lib/x86_64-linux-gnu/libjasper.so /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib/x86_64-linux-gnu/libImath.so /usr/lib/x86_64-linux-gnu/libIlmImf.so /usr/lib/x86_64-linux-gnu/libIex.so /usr/lib/x86_64-linux-gnu/libHalf.so /usr/lib/x86_64-linux-gnu/libIlmThread.so gtk-3 gdk-3 atk-1.0 gio-2.0 pangocairo-1.0 gdk_pixbuf-2.0 cairo-gobject pango-1.0 cairo gobject-2.0 glib-2.0 gthread-2.0 gstbase-1.0 gstreamer-1.0 dc1394 avcodec avformat avutil swscale vtkCommon vtkFiltering vtkImaging vtkGraphics vtkGenericFiltering vtkIO vtkRendering vtkVolumeRendering vtkHybrid vtkWidgets vtkParallel vtkInfovis vtkGeovis vtkViews vtkCharts dl m pthread rt
 --     3rdparty dependencies:       libwebp libprotobuf
--- 
+--
 --   OpenCV modules:
 --     To be built:                 core flann imgproc ml photo reg surface_matching video viz dnn freetype fuzzy imgcodecs shape videoio highgui objdetect plot superres ts xobjdetect xphoto bgsegm bioinspired dpm face features2d line_descriptor saliency text calib3d ccalib datasets rgbd stereo tracking videostab xfeatures2d ximgproc aruco optflow phase_unwrapping stitching structured_light python2
 --     Disabled:                    world contrib_world
 --     Disabled by dependency:      -
 --     Unavailable:                 cudaarithm cudabgsegm cudacodec cudafeatures2d cudafilters cudaimgproc cudalegacy cudaobjdetect cudaoptflow cudastereo cudawarping cudev java python3 cnn_3dobj cvv hdf matlab sfm
--- 
---   GUI: 
+--
+--   GUI:
 --     QT:                          NO
 --     GTK+ 3.x:                    YES (ver 3.10.8)
 --     GThread :                    YES (ver 2.40.2)
 --     GtkGlExt:                    NO
 --     OpenGL support:              NO
 --     VTK support:                 YES (ver 5.8.0)
--- 
---   Media I/O: 
+--
+--   Media I/O:
 --     ZLib:                        /usr/lib/x86_64-linux-gnu/libz.so (ver 1.2.8)
 --     JPEG:                        /usr/lib/x86_64-linux-gnu/libjpeg.so (ver )
 --     WEBP:                        build (ver 0.3.1)
@@ -187,7 +195,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     OpenEXR:                     /usr/lib/x86_64-linux-gnu/libImath.so /usr/lib/x86_64-linux-gnu/libIlmImf.so /usr/lib/x86_64-linux-gnu/libIex.so /usr/lib/x86_64-linux-gnu/libHalf.so /usr/lib/x86_64-linux-gnu/libIlmThread.so (ver 1.6.1)
 --     GDAL:                        NO
 --     GDCM:                        NO
--- 
+--
 --   Video I/O:
 --     DC1394 1.x:                  NO
 --     DC1394 2.x:                  YES (ver 2.2.1)
@@ -210,9 +218,9 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     XIMEA:                       NO
 --     Xine:                        NO
 --     gPhoto2:                     NO
--- 
+--
 --   Parallel framework:            pthreads
--- 
+--
 --   Other third-party libraries:
 --     Use IPP:                     9.0.1 [9.0.1]
 --          at:                     /home/map479-admin/opencv/build/3rdparty/ippicv/ippicv_lnx
@@ -225,54 +233,54 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     Use OpenCL:                  YES
 --     Use OpenVX:                  NO
 --     Use custom HAL:              NO
--- 
+--
 --   OpenCL:                        <Dynamic loading of OpenCL library>
 --     Include path:                /home/map479-admin/opencv/3rdparty/include/opencl/1.2
 --     Use AMDFFT:                  NO
 --     Use AMDBLAS:                 NO
--- 
+--
 --   Python 2:
 --     Interpreter:                 /home/map479-admin/.virtualenvs/cv/bin/python2.7 (ver 2.7.13)
 --     Libraries:                   /usr/local/lib/libpython2.7.a (ver 2.7.13)
 --     numpy:                       /home/map479-admin/.virtualenvs/cv/lib/python2.7/site-packages/numpy/core/include (ver 1.12.1)
 --     packages path:               lib/python2.7/site-packages
--- 
+--
 --   Python 3:
 --     Interpreter:                 /usr/bin/python3.4 (ver 3.4.3)
--- 
+--
 --   Python (for build):            /home/map479-admin/.virtualenvs/cv/bin/python2.7
--- 
+--
 --   Java:
 --     ant:                         NO
 --     JNI:                         /usr/lib/jvm/default-java/include /usr/lib/jvm/default-java/include /usr/lib/jvm/default-java/include
 --     Java wrappers:               NO
 --     Java tests:                  NO
--- 
+--
 --   Matlab:                        Matlab not found or implicitly disabled
--- 
+--
 --   Documentation:
 --     Doxygen:                     NO
--- 
+--
 --   Tests and samples:
 --     Tests:                       YES
 --     Performance tests:           YES
 --     C/C++ Examples:              NO
--- 
+--
 --   Install path:                  /usr/local
--- 
+--
 --   cvconfig.h is in:              /home/map479-admin/opencv/build
 -- -----------------------------------------------------------------
--- 
+--
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/map479-admin/opencv/build
 -- General configuration for OpenCV 3.2.0 =====================================
 --   Version control:               3.2.0
--- 
+--
 --   Extra modules:
 --     Location (extra):            /home/map479-admin/opencv_contrib/modules
 --     Version control (extra):     3.2.0
--- 
+--
 --   Platform:
 --     Timestamp:                   2017-04-19T15:31:13Z
 --     Host:                        Linux 3.13.0-116-generic x86_64
@@ -280,7 +288,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     CMake generator:             Unix Makefiles
 --     CMake build tool:            /usr/bin/make
 --     Configuration:               RELEASE
--- 
+--
 --   C/C++:
 --     Built as dynamic libs?:      YES
 --     C++ Compiler:                /usr/bin/c++  (ver 4.8.4)
@@ -295,22 +303,22 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     Precompiled headers:         YES
 --     Extra dependencies:          /usr/lib/x86_64-linux-gnu/libpng.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libtiff.so /usr/lib/x86_64-linux-gnu/libjasper.so /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib/x86_64-linux-gnu/libImath.so /usr/lib/x86_64-linux-gnu/libIlmImf.so /usr/lib/x86_64-linux-gnu/libIex.so /usr/lib/x86_64-linux-gnu/libHalf.so /usr/lib/x86_64-linux-gnu/libIlmThread.so gtk-3 gdk-3 atk-1.0 gio-2.0 pangocairo-1.0 gdk_pixbuf-2.0 cairo-gobject pango-1.0 cairo gobject-2.0 glib-2.0 gthread-2.0 gstbase-1.0 gstreamer-1.0 dc1394 avcodec avformat avutil swscale vtkCommon vtkFiltering vtkImaging vtkGraphics vtkGenericFiltering vtkIO vtkRendering vtkVolumeRendering vtkHybrid vtkWidgets vtkParallel vtkInfovis vtkGeovis vtkViews vtkCharts dl m pthread rt
 --     3rdparty dependencies:       libwebp libprotobuf
--- 
+--
 --   OpenCV modules:
 --     To be built:                 core flann imgproc ml photo reg surface_matching video viz dnn freetype fuzzy imgcodecs shape videoio highgui objdetect plot superres ts xobjdetect xphoto bgsegm bioinspired dpm face features2d line_descriptor saliency text calib3d ccalib datasets rgbd stereo tracking videostab xfeatures2d ximgproc aruco optflow phase_unwrapping stitching structured_light python2
 --     Disabled:                    world contrib_world
 --     Disabled by dependency:      -
 --     Unavailable:                 cudaarithm cudabgsegm cudacodec cudafeatures2d cudafilters cudaimgproc cudalegacy cudaobjdetect cudaoptflow cudastereo cudawarping cudev java python3 cnn_3dobj cvv hdf matlab sfm
--- 
---   GUI: 
+--
+--   GUI:
 --     QT:                          NO
 --     GTK+ 3.x:                    YES (ver 3.10.8)
 --     GThread :                    YES (ver 2.40.2)
 --     GtkGlExt:                    NO
 --     OpenGL support:              NO
 --     VTK support:                 YES (ver 5.8.0)
--- 
---   Media I/O: 
+--
+--   Media I/O:
 --     ZLib:                        /usr/lib/x86_64-linux-gnu/libz.so (ver 1.2.8)
 --     JPEG:                        /usr/lib/x86_64-linux-gnu/libjpeg.so (ver )
 --     WEBP:                        build (ver 0.3.1)
@@ -320,7 +328,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     OpenEXR:                     /usr/lib/x86_64-linux-gnu/libImath.so /usr/lib/x86_64-linux-gnu/libIlmImf.so /usr/lib/x86_64-linux-gnu/libIex.so /usr/lib/x86_64-linux-gnu/libHalf.so /usr/lib/x86_64-linux-gnu/libIlmThread.so (ver 1.6.1)
 --     GDAL:                        NO
 --     GDCM:                        NO
--- 
+--
 --   Video I/O:
 --     DC1394 1.x:                  NO
 --     DC1394 2.x:                  YES (ver 2.2.1)
@@ -343,9 +351,9 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     XIMEA:                       NO
 --     Xine:                        NO
 --     gPhoto2:                     NO
--- 
+--
 --   Parallel framework:            pthreads
--- 
+--
 --   Other third-party libraries:
 --     Use IPP:                     9.0.1 [9.0.1]
 --          at:                     /home/map479-admin/opencv/build/3rdparty/ippicv/ippicv_lnx
@@ -358,44 +366,44 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 --     Use OpenCL:                  YES
 --     Use OpenVX:                  NO
 --     Use custom HAL:              NO
--- 
+--
 --   OpenCL:                        <Dynamic loading of OpenCL library>
 --     Include path:                /home/map479-admin/opencv/3rdparty/include/opencl/1.2
 --     Use AMDFFT:                  NO
 --     Use AMDBLAS:                 NO
--- 
+--
 --   Python 2:
 --     Interpreter:                 /home/map479-admin/.virtualenvs/cv/bin/python2.7 (ver 2.7.13)
 --     Libraries:                   /usr/local/lib/libpython2.7.a (ver 2.7.13)
 --     numpy:                       /home/map479-admin/.virtualenvs/cv/lib/python2.7/site-packages/numpy/core/include (ver 1.12.1)
 --     packages path:               lib/python2.7/site-packages
--- 
+--
 --   Python 3:
 --     Interpreter:                 /usr/bin/python3.4 (ver 3.4.3)
--- 
+--
 --   Python (for build):            /home/map479-admin/.virtualenvs/cv/bin/python2.7
--- 
+--
 --   Java:
 --     ant:                         NO
 --     JNI:                         /usr/lib/jvm/default-java/include /usr/lib/jvm/default-java/include /usr/lib/jvm/default-java/include
 --     Java wrappers:               NO
 --     Java tests:                  NO
--- 
+--
 --   Matlab:                        Matlab not found or implicitly disabled
--- 
+--
 --   Documentation:
 --     Doxygen:                     NO
--- 
+--
 --   Tests and samples:
 --     Tests:                       YES
 --     Performance tests:           YES
 --     C/C++ Examples:              NO
--- 
+--
 --   Install path:                  /usr/local
--- 
+--
 --   cvconfig.h is in:              /home/map479-admin/opencv/build
 -- -----------------------------------------------------------------
--- 
+--
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/map479-admin/opencv/build
@@ -409,7 +417,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 Now we can finally compile OpenCV:
 
 ```
-make 
+make
 ```
 
 Assuming that OpenCV compiled without error, you can now install it on your Ubuntu system:
@@ -428,7 +436,7 @@ cd ~/.virtualenvs/cv/lib/python2.7/site-packages/
 ln -s /usr/local/lib/python2.7/site-packages/cv2.so cv2.so
 
 
-#### Step 12: 
+#### Step 12:
 
 ```
 $ workon cv
@@ -437,9 +445,3 @@ $ python
 >>> cv2.__version__
 '3.2.0'
 ```
-
-
-
-
-
-
