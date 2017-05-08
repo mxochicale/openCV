@@ -22,8 +22,11 @@ http://www.pyimagesearch.com/2015/06/22/install-opencv-3-0-and-python-2-7-on-ubu
 
 # Upgrate Python 2.7
 
-sudo apt-get install build-essential checkinstall
-sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+```
+sudo apt-get install build-essential checkinstall  
+sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev  
+```
+
 
 ```
 cd /usr/src
@@ -42,6 +45,8 @@ make install
 Python 2.7.13
 ```
 [REF](https://tecadmin.net/install-python-2-7-on-centos-rhel/)
+
+
 
 
 #### Step 1: Update and Upgrade
