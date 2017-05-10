@@ -1,30 +1,15 @@
 Installation
 --------------
 
-openCV 3.0 is indeed compatible with Python 3+.
-However, the install instructions are slightly different
-between Python 2.7+ and Python 3+.
 
+#### Upgrating Python to 2.7 version
 
-Install OpenCV 3 on Ubuntu 16.04 with either Python 2.7 or Python 3.5 bindings.
-http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/
+[Source](https://tecadmin.net/install-python-2-7-on-centos-rhel/)
 
-
-
-# Install OpenCV 3.2 and Python 2.7+ on Ubuntu 14.04 x64
-http://www.pyimagesearch.com/2015/06/22/install-opencv-3-0-and-python-2-7-on-ubuntu/
-
-
-
-
-[OpenCV3.2.0](https://github.com/opencv/opencv/releases/tag/3.2.0)
-
-
-# Upgrate Python 2.7
 
 ```
-sudo apt-get install build-essential checkinstall  
-sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev  
+sudo apt-get install build-essential checkinstall
+sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 ```
 
 
@@ -44,9 +29,17 @@ make install
 # python2.7 -V
 Python 2.7.13
 ```
-[REF](https://tecadmin.net/install-python-2-7-on-centos-rhel/)
 
 
+
+# Install [OpenCV 3.2.0](https://github.com/opencv/opencv/releases/tag/3.2.0) with Python 2.7+ on Ubuntu 14.04 x64
+
+[Main Source](http://www.pyimagesearch.com/2015/06/22/install-opencv-3-0-and-python-2-7-on-ubuntu/)
+
+
+NOTE: openCV 3.0 is indeed compatible with Python 3+.
+However, the install instructions are slightly different
+between Python 2.7+ and Python 3+.
 
 
 #### Step 1: Update and Upgrade
